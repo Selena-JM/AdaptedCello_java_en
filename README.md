@@ -52,8 +52,8 @@ Had to modify BaseController at line 35 from i = 0 to i=2 so that the C: in wind
 
 ## Fixing the running issue
 —> The interface works and can enter the input and outputs but nothing runs
-    - When clicking on run nothing happens
-    - Trying the python CLI :
+- When clicking on run nothing happens
+- Trying the python CLI :
         Doesn’t work : permission denied
         
         ```jsx
@@ -255,7 +255,7 @@ Had to modify BaseController at line 35 from i = 0 to i=2 so that the C: in wind
         requests.exceptions.ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /submit?id=job_1709804965351&input_promoter_data=pBAD+0.0082+2.5+ACTTTTCATACTCCCGCCATTCAGAGAAGAAACCAATTGTCCATATTGCATCAGACATTGCCGTCACTGCGTCTTTTACTGGCTCTTCTCGCTAACCAAACCGGTAACCCCGCTTATTAAAAGCATTCTGTAACAAAGCGGGACCAAAGCCATGACAAAAACGCGTAACAAAAGTGTCTATAATCACGGCAGAAAAGTCCACATTGATTATTTGCACGGCGTCACACTTTGCTATGCCATAGCATTTTTATCCATAAGATTAGCGGATCCTACCTGACGCTTTTTATCGCAACTCTCTACTGTTTCTCCATACCCGTTTTTTTGGGCTAGC%0ApTac+0.0034+2.8+AACGATCGTTGGCTGTGTTGACAATTAATCATCGGCTCGTATAATGTGTGGAATTGTGAGCGCTCACAATT%0A&output_gene_data=RFP+CTGAAGTGGTCGTGATCTGAAACTCGATCACCTGATGAGCTCAAGGCAGAGCGAAACCACCTCTACAAATAATTTTGTTTAATACTAGAGTCACACAGGAAAGTACTAGATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTTCGTATGGAAGGTTCCGTTAACGGTCACGAGTTCGAAATCGAAGGTGAAGGTGAAGGTCGTCCGTACGAAGGTACCCAGACCGCTAAACTGAAAGTTACCAAAGGTGGTCCGCTGCCGTTCGCTTGGGACATCCTGTCCCCGCAGTTCCAGTACGGTTCCAAAGCTTACGTTAAACACCCGGCTGACATCCCGGACTACCTGAAACTGTCCTTCCCGGAAGGTTTCAAATGGGAACGTGTTATGAACTTCGAAGACGGTGGTGTTGTTACCGTTACCCAGGACTCCTCCCTGCAAGACGGTGAGTTCATCTACAAAGTTAAACTGCGTGGTACCAACTTCCCGTCCGACGGTCCGGTTATGCAGAAAAAAACCATGGGTTGGGAAGCTTCCACCGAACGTATGTACCCGGAAGACGGTGCTCTGAAAGGTGAAATCAAAATGCGTCTGAAACTGAAAGACGGTGGTCACTACGACGCTGAAGTTAAAACCACCTACATGGCTAAAAAACCGGTTCAGCTGCCGGGTGCTTACAAAACCGACATCAAACTGGACATCACCTCCCACAACGAAGACTACACCATCGTTGAACAGTACGAACGTGCTGAAGGTCGTCACTCCACCGGTGCTTAATAACAGATAAAAAAAATCCTTAGCTTTCGCTAAGGATGATTTCT%0A&verilog_text=module+A%28output+out1%2C++input+in1%2C+in2%29%3B%0A++always%40%28in1%2Cin2%29%0A++++begin%0A++++++case%28%7Bin1%2Cin2%7D%29%0A++++++++2%27b00%3A+%7Bout1%7D+%3D+1%27b0%3B%0A++++++++2%27b01%3A+%7Bout1%7D+%3D+1%27b0%3B%0A++++++++2%27b10%3A+%7Bout1%7D+%3D+1%27b0%3B%0A++++++++2%27b11%3A+%7Bout1%7D+%3D+1%27b1%3B%0A++++++endcase%0A++++end%0Aendmodule%0A (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000029CEFCF7610>: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée'))
         ```
         
-    - When running in the command line interface, I get the errors :
+- When running in the command line interface, I get the errors :
     
     ```
     mvn -f ../pom.xml -DskipTests=true -PCelloMain -Dexec.args="-verilog demo_verilog.v -input_promoters demo_inputs.txt -output_genes demo_outputs.txt"
@@ -325,7 +325,7 @@ Had to modify BaseController at line 35 from i = 0 to i=2 so that the C: in wind
 
 
 --> The problem was that the abcOutput.bench file was not created. Had to modify the following files (but also had to create another computer session with selena instead of Séléna because the special characters were a pain in the a**, maybe there is no need for the changes with this new username)
-    - Line 129 in ABCadaptator
+- Line 129 in ABCadaptator
         
         ```jsx
         commandBuilder = new StringBuilder("cd " + resourcesFilePath.substring(0, resourcesFilePath.length()-1) + " && " + resourcesFilePath + "abc.exe -c \"read " + resultsFilepath + filename + ".blif; strash;  rewrite; refactor; balance; write " + resultsFilepath + "abcOutput.bench; quit\" && " + "cd " + current_directory);
@@ -346,8 +346,8 @@ instead of
         abcoutput = ABCAdaptor.*runABC*("Blif_File_EsABC", this.resourcesPath, new_results_path, this.wirecount);
         ```
         
-    
-- Now everything works but don’t have the visual respresentations, get the error :
+## Fixing visual representation issues
+--> Now everything works but don’t have the visual respresentations, get the error :
     
     ```jsx
     =========== SBOL for circuit plasmids ========
@@ -387,8 +387,8 @@ instead of
     at java.base/java.lang.Thread.run(Thread.java:834)
     ```
     
-    Solution :
-  - Lines 114 -> 128 in SBOLCircuitWriter 
+- Solution :
+     - Lines 114 -> 128 in SBOLCircuitWriter 
     
     ```
          // Check if the component already has a SequenceAnnotation
@@ -426,7 +426,7 @@ instead of
     - Need to change all the calls to the functions .createParticipation, the second argument needs to be .getIdentity(), for example protein_fc.getIdentity() instead of proteinParticipationID
     
 
-—> Everything works except for the images of the circuit 
+—-> Everything works except for the images of the circuit 
 
 - Problem with the function *writeCircuitsForDNAPlotLib* line 1330 in [DNACompiler.java](http://DNACompiler.java) —> it calls the python script /resources/scripts/plot_SBOL_designs.py incorrectly
     - Had to change the command to execute 
