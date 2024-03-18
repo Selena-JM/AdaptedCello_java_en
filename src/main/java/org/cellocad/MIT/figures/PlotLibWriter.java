@@ -3,14 +3,25 @@ package org.cellocad.MIT.figures;
  * Created by Bryan Der on 3/26/14.
  */
 
+import org.cellocad.BU.dom.DGate;
+import org.cellocad.BU.netsynth.NetSynth;
+import org.cellocad.BU.netsynth.Utilities;
 import org.cellocad.BU.parseVerilog.Convert;
 import org.cellocad.MIT.dnacompiler.Args;
 import org.cellocad.MIT.dnacompiler.Gate;
 import org.cellocad.MIT.dnacompiler.Part;
 import org.cellocad.MIT.dnacompiler.Util;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class PlotLibWriter {
@@ -46,14 +57,14 @@ public class PlotLibWriter {
 
         String python_exe = "python";
 
-        String cmd = python_exe + " -W ignore " + options.get_home() + "/resources/scripts/plot_SBOL_designs.py";
+        String cmd = python_exe + " -W ignore " + options.get_home().substring(1) + "/resources/scripts/plot_SBOL_designs.py"; // python_exe + " -W ignore " + options.get_home() + "/resources/scripts/plot_SBOL_designs.py";
         cmd += " -params "  + params;
         cmd += " -parts "   + parts;
         cmd += " -designs " + designs;
         cmd += " -reg "     + reg;
         cmd += " -output "  + out;
         Util.executeCommand(cmd);
-
+        
         //ScriptCommands script_commands = new ScriptCommands(options.get_home(), options.get_output_directory(), options.get_jobID());
         //script_commands.makePdf2Png(out);
     }
