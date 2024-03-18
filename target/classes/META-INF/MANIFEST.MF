@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: selena
+Build-Jdk: 17.0.6
+Implementation-Title: Cello
+Implementation-Version: 1.0-SNAPSHOT
+Implementation-Vendor-Id: org
+Implementation-Vendor: Pivotal Software, Inc.
+Main-Class: org.cellocad.Application
+Created-By: Maven Integration for Eclipse
+
