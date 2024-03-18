@@ -444,3 +444,5 @@ instead of
     - Had to change the python script : instead of ‘rU’ option as argument in the open function I used ‘r’ (lines 47, 60, 83, 119)
 
 WORKS PERFECTLY with these modifications : can run any veriolog file with the specified inputs and outputs 
+
+**Need the APE software to read the .ape files and create the images of the plasmid circuits**
