@@ -1,5 +1,11 @@
 # Adaptations done to the source code for the Cello app to work
 Supposed to work without installing anything at [www.cellocad.org](http://www.cellocad.org/) but does not so had to install and as a messssss
+Use this app, open git bash in one of the folders in the trials folder, and use the command 
+
+```
+bash command.txt
+```
+to run the command in the file command. See the RUN.md file for examples of commands, especially if you want to use another UCF file.
 
 ## Fixing compilation errors
 - Go to https://github.com/CIDARLAB/cello/blob/develop/INSTALL.md for information on how to install
