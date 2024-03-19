@@ -1,0 +1,5 @@
+job_1710841913901_A000_P002 [+Escar, +pAmtR, +RFP, +Xscar, +pPsrA, +BFP, +Vscar, +pAmeR, +BFP, +Uscar, +pBAD, +YFP, +Cscar]
+job_1710841913901_A000_P002 [+Escar, +pAmtR, +RFP, +Xscar, +pAmeR, +BFP, +Vscar, +pPsrA, +BFP, +Uscar, +pBAD, +YFP, +Cscar]
+job_1710841913901_A000_P002 [+Escar, +pBAD, +YFP, +Xscar, +pAmtR, +RFP, +Vscar, +pAmeR, +BFP, +Uscar, +pPsrA, +BFP, +Cscar]
+job_1710841913901_A000_P002 [+Escar, +pAmtR, +RFP, +Xscar, +pPsrA, +BFP, +Vscar, +pBAD, +YFP, +Uscar, +pAmeR, +BFP, +Cscar]
+job_1710841913901_A000_P002 [+Escar, +pAmeR, +BFP, +Xscar, +pBAD, +YFP, +Vscar, +pAmtR, +RFP, +Uscar, +pPsrA, +BFP, +Cscar]

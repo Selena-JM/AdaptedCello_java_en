@@ -1,0 +1,13 @@
+fadD            0101010101010101
+pLuxStar        0011001100110011
+pBAD            0000111100001111
+galEP2          0000000011111111
+S4_SrpR         pHlyIIR   fadD      
+B3_BM3R1        pPhlF     fadD      
+H1_HlyIIR       galEP2    
+P1_PhlF         pLuxStar  
+A1_AmtR         fadD      
+YFP             pBAD      
+BFP             pSrpR     
+GFP             pBM3R1    
+RFP             pAmtR     

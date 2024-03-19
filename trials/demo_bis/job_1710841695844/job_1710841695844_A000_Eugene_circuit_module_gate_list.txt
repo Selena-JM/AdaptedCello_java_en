@@ -1,0 +1,1 @@
+job_1710841695844_A000_P000 [+gate_PhlF, +gate_SrpR, +gate_BM3R1, +gate_LmrA, +gate_HlyIIR, +gate_AmtR]

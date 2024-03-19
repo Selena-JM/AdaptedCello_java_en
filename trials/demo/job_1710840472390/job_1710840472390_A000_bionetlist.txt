@@ -1,0 +1,6 @@
+pBAD            0101
+pTac            0011
+S4_SrpR         pPhlF     pAmtR     
+P1_PhlF         pBAD      
+A1_AmtR         pTac      
+RFP             pSrpR     

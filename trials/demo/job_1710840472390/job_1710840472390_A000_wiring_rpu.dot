@@ -1,0 +1,16 @@
+#GRAPHVIZ_OUTPUT 
+digraph{ 
+rankdir=LR; 
+splines=ortho; 
+RFP[shape=none,label="RFP"]; 
+pBAD[shape=none,label="pBAD"]; 
+pTac[shape=none,label="pTac"]; 
+S4_SrpR[fixedsize=true,height=1.0,width=1.0,label="",shape=none,image="job_1710840472390_A000_S4_SrpR_gate.png"]; 
+P1_PhlF[fixedsize=true,height=1.0,width=1.0,label="",shape=none,image="job_1710840472390_A000_P1_PhlF_gate.png"]; 
+A1_AmtR[fixedsize=true,height=1.0,width=1.0,label="",shape=none,image="job_1710840472390_A000_A1_AmtR_gate.png"]; 
+S4_SrpR ->RFP ; 
+P1_PhlF ->S4_SrpR ; 
+A1_AmtR ->S4_SrpR ; 
+pBAD ->P1_PhlF ; 
+pTac ->A1_AmtR ; 
+} 

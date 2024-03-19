@@ -1,0 +1,1 @@
+job_1710841578858_A000_P000 [+Escar, +pBM3R1, +pAmtR, +RiboJ53, +P2, +PhlF, +ECK120033737, +Xscar, +pTac, +RiboJ10, +S2, +SrpR, +ECK120029600, +Vscar, +pHlyIIR, +SarJ, +B3, +BM3R1, +L3S2P11, +Uscar, +pTet, +RiboJ57, +E1, +BetI, +L3S3P11, +Fscar, +pSrpR, +pBetI, +RiboJ51, +H1, +HlyIIR, +ECK120033736, +Dscar, +pBAD, +BydvJ, +A1, +AmtR, +L3S2P55, +Cscar]

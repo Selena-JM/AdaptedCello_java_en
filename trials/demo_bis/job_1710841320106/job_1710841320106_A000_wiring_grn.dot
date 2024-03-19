@@ -1,0 +1,24 @@
+#GRAPHVIZ_OUTPUT 
+digraph{ 
+rankdir=LR; 
+splines=ortho; 
+YFP[shape=none,label="YFP\n  163.56\n00000001"]; 
+pTac[shape=none,label="INPUT pTac 0\n  823.53\n01010101"]; 
+pTet[shape=none,label="INPUT pTet 0\n 3384.62\n00110011"]; 
+pBAD[shape=none,label="INPUT pBAD 0\n  304.88\n00001111"]; 
+S4_SrpR[shape=box,style=filled,fillcolor=gray100,label="NOR S4_SrpR 4\n  163.56\n00000001"]; 
+P3_PhlF[shape=box,style=filled,fillcolor=gray100,label="NOT P3_PhlF 3\n  311.87\n11101110"]; 
+H1_HlyIIR[shape=box,style=filled,fillcolor=gray100,label="NOR H1_HlyIIR 2\n   17.69\n00010001"]; 
+A1_AmtR[shape=box,style=filled,fillcolor=gray100,label="NOT A1_AmtR 1\n   51.00\n11110000"]; 
+E1_BetI[shape=box,style=filled,fillcolor=gray100,label="NOT E1_BetI 1\n   35.61\n10101010"]; 
+B3_BM3R1[shape=box,style=filled,fillcolor=gray100,label="NOT B3_BM3R1 1\n   79.58\n11001100"]; 
+S4_SrpR->YFP; 
+P3_PhlF->S4_SrpR; 
+A1_AmtR->S4_SrpR; 
+H1_HlyIIR->P3_PhlF; 
+pBAD->A1_AmtR; 
+E1_BetI->H1_HlyIIR; 
+B3_BM3R1->H1_HlyIIR; 
+pTac->E1_BetI; 
+pTet->B3_BM3R1; 
+} 

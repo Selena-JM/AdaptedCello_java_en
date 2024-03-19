@@ -1,0 +1,24 @@
+#GRAPHVIZ_OUTPUT 
+digraph{ 
+rankdir=LR; 
+splines=ortho; 
+YFP[shape=none,label="YFP"]; 
+pTac[shape=none,label="pTac"]; 
+pTet[shape=none,label="pTet"]; 
+pBAD[shape=none,label="pBAD"]; 
+P2_PhlF[fixedsize=true,height=1.0,width=1.0,label="",shape=none,image="job_1710841578858_A000_xfer_model_P2_PhlF.png"]; 
+B3_BM3R1[fixedsize=true,height=1.0,width=1.0,label="",shape=none,image="job_1710841578858_A000_xfer_model_B3_BM3R1.png"]; 
+H1_HlyIIR[fixedsize=true,height=1.0,width=1.0,label="",shape=none,image="job_1710841578858_A000_xfer_model_H1_HlyIIR.png"]; 
+A1_AmtR[fixedsize=true,height=1.0,width=1.0,label="",shape=none,image="job_1710841578858_A000_xfer_model_A1_AmtR.png"]; 
+S2_SrpR[fixedsize=true,height=1.0,width=1.0,label="",shape=none,image="job_1710841578858_A000_xfer_model_S2_SrpR.png"]; 
+E1_BetI[fixedsize=true,height=1.0,width=1.0,label="",shape=none,image="job_1710841578858_A000_xfer_model_E1_BetI.png"]; 
+P2_PhlF ->YFP ; 
+B3_BM3R1 ->P2_PhlF ; 
+A1_AmtR ->P2_PhlF ; 
+H1_HlyIIR ->B3_BM3R1 ; 
+pBAD ->A1_AmtR ; 
+S2_SrpR ->H1_HlyIIR ; 
+E1_BetI ->H1_HlyIIR ; 
+pTac ->S2_SrpR ; 
+pTet ->E1_BetI ; 
+} 
