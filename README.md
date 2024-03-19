@@ -1,11 +1,18 @@
 # Adaptations done to the source code for the Cello app to work
-Supposed to work without installing anything at [www.cellocad.org](http://www.cellocad.org/) but does not so had to install and as a messssss
-Use this app, open git bash in one of the folders in the trials folder, and use the command 
+This app is supposed to work without installing anything at [www.cellocad.org](http://www.cellocad.org/) but does not (probably because of permission changes in the repo.string.io repository) so here are all the modifications to the source code to get it to work properly.
+
+To use this app, open git bash in one of the folders in the trials folder, and use the command 
 
 ```
 bash command.txt
 ```
-to run the command in the file command. See the RUN.md file for examples of commands, especially if you want to use another UCF file.
+This will run the command written in the command file. This file, along with the veriolg file and the input/output text files can be modified to suit your needs. See the RUN.md file for examples of commands, especially if you want to use another UCF file.
+
+**Note that one need the APE software to read the .ape files created by Cello and create the images of the plasmid circuits like the one below**
+
+
+<img width="353" alt="Screenshot 2024-03-19 142847" src="https://github.com/Selena-JM/Adapted_cello_java/assets/160735287/4b95c6ba-f3f4-4546-8b31-f41788f05b66">
+
 
 ## Fixing compilation errors
 - Go to https://github.com/CIDARLAB/cello/blob/develop/INSTALL.md for information on how to install
@@ -444,7 +451,3 @@ at java.base/java.lang.Thread.run(Thread.java:834)
         ```
         
     - Had to change the python script : instead of ‘rU’ option as argument in the open function I used ‘r’ (lines 47, 60, 83, 119)
-
-WORKS PERFECTLY with these modifications : can run any veriolog file with the specified inputs and outputs 
-
-**Need the APE software to read the .ape files and create the images of the plasmid circuits**
