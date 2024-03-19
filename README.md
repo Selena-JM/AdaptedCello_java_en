@@ -48,8 +48,8 @@ When launching the app, a username and password was requested and nothing worked
     
 - Need to delete the spring security dependency from pom.xml file otherwise when launching the application there will be this pop up
     
-    ![Untitled](https://prod-files-secure.s3.us-west-2.amazonaws.com/652f0cd2-12cf-4146-a485-bcc184fc174b/b6fd38cf-6fda-4c71-89cd-9b4a86ed0aa8/Untitled.png)
-    
+    ![Untitled](https://github.com/Selena-JM/Adapted_cello_java/assets/160735287/f34b88fb-8ae9-4883-80ac-c082ae543264)
+
     https://stackoverflow.com/questions/45232071/springboot-401-unauthorized-even-with-out-security
     
 
@@ -62,7 +62,7 @@ Had to modify BaseController at line 35 from i = 0 to i=2 so that the C: in wind
 - Trying the python CLI :
         Doesn’t work : permission denied
         
-        ```jsx
+        ```
         pip install --editable .
         Obtaining file:///C:/Users/S%C3%A9l%C3%A9na/Cello/cello/tools/pycello
         Preparing metadata ([setup.py](http://setup.py/)) ... done
@@ -74,7 +74,7 @@ Had to modify BaseController at line 35 from i = 0 to i=2 so that the C: in wind
         Requirement already satisfied: urllib3<3,>=1.21.1 in c:\python311\lib\site-packages (from requests->cello==0.1) (2.0.7)
         ```
         
-        ```jsx
+        ```
         Requirement already satisfied: certifi>=2017.4.17 in c:\users\séléna\appdata\roaming\python\python311\site-packages (from requests->cello==0.1) (2024.2.2)
         Installing collected packages: cello
         Attempting uninstall: cello
@@ -113,14 +113,14 @@ Had to modify BaseController at line 35 from i = 0 to i=2 so that the C: in wind
         
         ```
         
-        ```jsx
+        ```
         Rolling back uninstall of cello
         Moving to c:\python311\lib\site-packages\cello.egg-link
         from C:\Users\Séléna\AppData\Local\Temp\pip-uninstall-vwnn21gt\cello.egg-link
         error: subprocess-exited-with-error
         ```
         
-        ```jsx
+        ```
         × python [setup.py](http://setup.py/) develop did not run successfully.
         │ exit code: 1
         ╰─> [18 lines of output]
@@ -145,17 +145,17 @@ Had to modify BaseController at line 35 from i = 0 to i=2 so that the C: in wind
         [end of output]
         ```
         
-        ```jsx
+        ```
         note: This error originates from a subprocess, and is likely not a problem with pip.
-        ```jsx
+        ```
         
 - Same with another call
         
-        ```jsx
+        ```
         python cello_client.py submit --jobid "job_1709804965351" --verilog "C:/Users/Séléna/Cello/cello/demo/demo_verilog.v" --inputs "C:/Users/Séléna/Cello/cello/demo/demo_inputs.txt" --outputs "C:/Users/Séléna/Cello/cello/demo/demo_outputs.txt"
         ```
         
-        ```jsx
+        ```
         Traceback (most recent call last):
         File "C:\Python311\Lib\site-packages\urllib3\[connection.py](http://connection.py/)", line 203, in _new_conn
         sock = connection.create_connection(
@@ -167,11 +167,11 @@ Had to modify BaseController at line 35 from i = 0 to i=2 so that the C: in wind
         ConnectionRefusedError: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée
         ```
         
-        ```jsx
+        ``` 
         The above exception was the direct cause of the following exception:
         ```
         
-        ```jsx
+        ``` 
         Traceback (most recent call last):
         File "C:\Python311\Lib\site-packages\urllib3\[connectionpool.py](http://connectionpool.py/)", line 791, in urlopen
         response = self._make_request(
@@ -194,11 +194,11 @@ Had to modify BaseController at line 35 from i = 0 to i=2 so that the C: in wind
         urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x0000029CEFCF7610>: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée
         ```
         
-        ```jsx
+        ``` 
         The above exception was the direct cause of the following exception:
         ```
         
-        ```jsx
+        ``` 
         Traceback (most recent call last):
         File "C:\Users\Séléna\AppData\Roaming\Python\Python311\site-packages\requests\[adapters.py](http://adapters.py/)", line 486, in send
         resp = conn.urlopen(
@@ -212,11 +212,11 @@ Had to modify BaseController at line 35 from i = 0 to i=2 so that the C: in wind
         urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /submit?id=job_1709804965351&input_promoter_data=pBAD+0.0082+2.5+ACTTTTCATACTCCCGCCATTCAGAGAAGAAACCAATTGTCCATATTGCATCAGACATTGCCGTCACTGCGTCTTTTACTGGCTCTTCTCGCTAACCAAACCGGTAACCCCGCTTATTAAAAGCATTCTGTAACAAAGCGGGACCAAAGCCATGACAAAAACGCGTAACAAAAGTGTCTATAATCACGGCAGAAAAGTCCACATTGATTATTTGCACGGCGTCACACTTTGCTATGCCATAGCATTTTTATCCATAAGATTAGCGGATCCTACCTGACGCTTTTTATCGCAACTCTCTACTGTTTCTCCATACCCGTTTTTTTGGGCTAGC%0ApTac+0.0034+2.8+AACGATCGTTGGCTGTGTTGACAATTAATCATCGGCTCGTATAATGTGTGGAATTGTGAGCGCTCACAATT%0A&output_gene_data=RFP+CTGAAGTGGTCGTGATCTGAAACTCGATCACCTGATGAGCTCAAGGCAGAGCGAAACCACCTCTACAAATAATTTTGTTTAATACTAGAGTCACACAGGAAAGTACTAGATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTTCGTATGGAAGGTTCCGTTAACGGTCACGAGTTCGAAATCGAAGGTGAAGGTGAAGGTCGTCCGTACGAAGGTACCCAGACCGCTAAACTGAAAGTTACCAAAGGTGGTCCGCTGCCGTTCGCTTGGGACATCCTGTCCCCGCAGTTCCAGTACGGTTCCAAAGCTTACGTTAAACACCCGGCTGACATCCCGGACTACCTGAAACTGTCCTTCCCGGAAGGTTTCAAATGGGAACGTGTTATGAACTTCGAAGACGGTGGTGTTGTTACCGTTACCCAGGACTCCTCCCTGCAAGACGGTGAGTTCATCTACAAAGTTAAACTGCGTGGTACCAACTTCCCGTCCGACGGTCCGGTTATGCAGAAAAAAACCATGGGTTGGGAAGCTTCCACCGAACGTATGTACCCGGAAGACGGTGCTCTGAAAGGTGAAATCAAAATGCGTCTGAAACTGAAAGACGGTGGTCACTACGACGCTGAAGTTAAAACCACCTACATGGCTAAAAAACCGGTTCAGCTGCCGGGTGCTTACAAAACCGACATCAAACTGGACATCACCTCCCACAACGAAGACTACACCATCGTTGAACAGTACGAACGTGCTGAAGGTCGTCACTCCACCGGTGCTTAATAACAGATAAAAAAAATCCTTAGCTTTCGCTAAGGATGATTTCT%0A&verilog_text=module+A%28output+out1%2C++input+in1%2C+in2%29%3B%0A++always%40%28in1%2Cin2%29%0A++++begin%0A++++++case%28%7Bin1%2Cin2%7D%29%0A++++++++2%27b00%3A+%7Bout1%7D+%3D+1%27b0%3B%0A++++++++2%27b01%3A+%7Bout1%7D+%3D+1%27b0%3B%0A++++++++2%27b10%3A+%7Bout1%7D+%3D+1%27b0%3B%0A++++++++2%27b11%3A+%7Bout1%7D+%3D+1%27b1%3B%0A++++++endcase%0A++++end%0Aendmodule%0A (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000029CEFCF7610>: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée'))
         ```
         
-        ```jsx
+        ``` 
         During handling of the above exception, another exception occurred:
         ```
         
-        ```jsx
+        ``` 
         Traceback (most recent call last):
         File "C:\Users\Séléna\Cello\cello\tools\pycello\cello_client.py", line 348, in <module>
         cli()
@@ -250,7 +250,7 @@ Had to modify BaseController at line 35 from i = 0 to i=2 so that the C: in wind
         File "C:\Users\Séléna\AppData\Roaming\Python\Python311\site-packages\requests\[sessions.py](http://sessions.py/)", line 589, in request
         ```
         
-        ```jsx
+        ``` 
         resp = self.send(prep, **send_kwargs)
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
         File "C:\Users\Séléna\AppData\Roaming\Python\Python311\site-packages\requests\[sessions.py](http://sessions.py/)", line 703, in send
@@ -268,7 +268,7 @@ Had to modify BaseController at line 35 from i = 0 to i=2 so that the C: in wind
     
     ```
     
-    ```jsx
+    ``` 
     org.cellocad.BU.netsynth.Utilities getFileContentAsStringList
     SEVERE: null
     
@@ -333,20 +333,20 @@ Had to modify BaseController at line 35 from i = 0 to i=2 so that the C: in wind
 --> The problem was that the abcOutput.bench file was not created. Had to modify the following files (but also had to create another computer session with selena instead of Séléna because the special characters were a pain in the a**, maybe there is no need for the changes with this new username)
 - Line 129 in ABCadaptator
         
-        ```jsx
+        ``` 
         commandBuilder = new StringBuilder("cd " + resourcesFilePath.substring(0, resourcesFilePath.length()-1) + " && " + resourcesFilePath + "abc.exe -c \"read " + resultsFilepath + filename + ".blif; strash;  rewrite; refactor; balance; write " + resultsFilepath + "abcOutput.bench; quit\" && " + "cd " + current_directory);
         ```
         
 instead of 
         
-        ```jsx
+        ``` 
         commandBuilder = new StringBuilder(resourcesFilePath + "abc.exe -c \"read " + resultsFilepath + filename + ".blif; strash;  rewrite; refactor; balance; write " + resultsFilepath + "abcOutput.bench; quit\"");
         ```
         
     
 - In NetSynth lines 1002 - 1004
         
-        ```jsx
+        ``` 
         String true_results_path = this.resultsPath.substring(0,17) + this.resultsPath.substring(18);
         String new_results_path = System.*getProperty*("user.dir")+ "\\" + true_results_path;
         abcoutput = ABCAdaptor.*runABC*("Blif_File_EsABC", this.resourcesPath, new_results_path, this.wirecount);
@@ -355,7 +355,7 @@ instead of
 ## Fixing visual representation issues
 --> Now everything works but don’t have the visual respresentations, get the error :
     
-    ```jsx
+    ``` 
     =========== SBOL for circuit plasmids ========
     org.sbolstandard.core2.SBOLValidationException: sbol-10522: The sequenceAnnotations property of a ComponentDefinition MUST NOT contain two or more SequenceAnnotation objects that refer to the same Component.
     Reference: SBOL Version 2.1.0 Section 7.7 on page 22
@@ -417,14 +417,14 @@ instead of
     
     instead of 
     
-    ```jsx
+    ``` 
     SequenceAnnotation sequenceAnnotation = _circuit_component_definition.createSequenceAnnotation(annotationID, "locationID"+_annotation_index, current_bp, next_bp);
                 sequenceAnnotation.setComponent(c.getIdentity());
     ```
     
   - Then for the error :
     
-    ```jsx
+    ``` 
     org.sbolstandard.core2.SBOLValidationException: sbol-12003: The FunctionalComponent referenced by the participant property of a Participation MUST be contained by the ModuleDefinition that contains the Interaction which contains the Participation.
     Reference: SBOL Version 2.1.0 Section 7.9.4 on page 44
     ```
@@ -437,13 +437,13 @@ instead of
 - Problem with the function *writeCircuitsForDNAPlotLib* line 1330 in [DNACompiler.java](http://DNACompiler.java) —> it calls the python script /resources/scripts/plot_SBOL_designs.py incorrectly
     - Had to change the command to execute 
         instead of :
-        ```jsx
+        ``` 
         python_exe + " -W ignore " + options.get_home() + "/resources/scripts/plot_SBOL_designs.py";
         ```
         
         use : 
         
-        ```jsx
+        ``` 
         python_exe + " -W ignore " + options.get_home().substring(1) + "/resources/scripts/plot_SBOL_designs.py";
         ```
         
