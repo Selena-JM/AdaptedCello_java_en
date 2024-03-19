@@ -8,7 +8,7 @@ bash command.txt
 ```
 This will run the command written in the command file. This file, along with the veriolg file and the input/output text files can be modified to suit your needs. See the RUN.md file for examples of commands, especially if you want to use another UCF file.
 
-**Note that one need the APE software to read the .ape files created by Cello and create the images of the plasmid circuits like the one below**
+**Note that you need the APE software to read the .ape files created by Cello and create the images of the plasmid circuits like the one below**
 
 
 <img width="353" alt="Screenshot 2024-03-19 142847" src="https://github.com/Selena-JM/Adapted_cello_java/assets/160735287/4b95c6ba-f3f4-4546-8b31-f41788f05b66">
