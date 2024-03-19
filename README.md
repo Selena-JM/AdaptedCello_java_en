@@ -1,6 +1,7 @@
-## Changes for it to compile properly
+# Adaptations done to the source code for the Cello app to work
 Supposed to work without installing anything at [www.cellocad.org](http://www.cellocad.org/) but does not so had to install and as a messssss
 
+## Fixing compilation errors
 - Go to https://github.com/CIDARLAB/cello/blob/develop/INSTALL.md for information on how to install
 - The repository used https://repo.spring.io/libs-release has since become private so we cannot access what is in this repository
     - Can still name it in the pom.xml file as a repository but all dependencies need to be installed manually
@@ -32,6 +33,9 @@ Supposed to work without installing anything at [www.cellocad.org](http://www.ce
 
 —> after that the build was successful 
 
+## Fixing the password problem
+When launching the app, a username and password was requested and nothing worked
+
 - Need to change the version of lombok package otherwise we get the error Illegal reflective access by lombok.javac.apt.LombokProcessor
     
     version 1.18.12 works fine https://github.com/projectlombok/lombok/issues/1962
@@ -43,82 +47,14 @@ Supposed to work without installing anything at [www.cellocad.org](http://www.ce
     https://stackoverflow.com/questions/45232071/springboot-401-unauthorized-even-with-out-security
     
 
+## Fixing input/output access issues
 Had to modify BaseController at line 35 from i = 0 to i=2 so that the C: in windows path becomes only a / and fits the unix path type, otherwise couldn’t access the files in cello_results/SelenaJM/ which are the inputs and outputs
 
+## Fixing the running issue
 —> The interface works and can enter the input and outputs but nothing runs
-
-- Need to enter the code to make the run button work or need to only do command line runs ?
-    - When clicking on run nothing happens
-    - When running in the command line interface, get the errors :
-    
-    ```
-    mvn -f ../pom.xml -DskipTests=true -PCelloMain -Dexec.args="-verilog demo_verilog.v -input_promoters demo_inputs.txt -output_genes demo_outputs.txt"
-    
-    ```
-    
-    ```jsx
-    org.cellocad.BU.netsynth.Utilities getFileContentAsStringList
-    SEVERE: null
-    
-    java.io.FileNotFoundException: job_1709738047825\netSynth\abcOutput.bench (Le fichier sp▒cifi▒ est introuvable)
-            at java.base/java.io.FileInputStream.open0(Native Method)
-            at java.base/java.io.FileInputStream.open(FileInputStream.java:219)
-            at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
-            at java.base/java.io.FileReader.<init>(FileReader.java:75)
-            at org.cellocad.BU.netsynth.Utilities.getFileContentAsStringList(Utilities.java:230)
-            at org.cellocad.BU.adaptors.ABCAdaptor.convertBenchToAIG(ABCAdaptor.java:177)
-            at org.cellocad.BU.adaptors.ABCAdaptor.runABC(ABCAdaptor.java:153)
-            at org.cellocad.BU.netsynth.NetSynth.runEspressoAndABC(NetSynth.java:990)
-            at org.cellocad.BU.netsynth.NetSynth.getNetlistCode(NetSynth.java:679)
-            at org.cellocad.BU.netsynth.NetSynth.getNetlist(NetSynth.java:560)
-            at org.cellocad.BU.netsynth.NetSynth.runNetSynth(NetSynth.java:511)
-            at org.cellocad.BU.netsynth.NetSynth.runNetSynth(NetSynth.java:497)
-            at org.cellocad.MIT.dnacompiler.DNACompiler.getAbstractCircuit(DNACompiler.java:1722)
-            at org.cellocad.MIT.dnacompiler.DNACompiler.run(DNACompiler.java:235)
-            at org.cellocad.MIT.dnacompiler.CelloMain.main(CelloMain.java:15)
-            at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-            at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
-            at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-            at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-            at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:293)
-            at java.base/java.lang.Thread.run(Thread.java:834)
-    
-    mars 06, 2024 4:14:09 PM org.cellocad.BU.netsynth.Utilities getFileContentAsStringList
-    SEVERE: null
-    [WARNING]
-    java.lang.reflect.InvocationTargetException
-        at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
-        at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:62)
-        at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
-        at java.lang.reflect.Method.invoke (Method.java:566)
-        at org.codehaus.mojo.exec.ExecJavaMojo$1.run (ExecJavaMojo.java:293)
-        at java.lang.Thread.run (Thread.java:834)
-    Caused by: java.lang.IllegalStateException: Error in abstract circuit.  Exiting.
-        at org.cellocad.MIT.dnacompiler.DNACompiler.run (DNACompiler.java:237)
-        at org.cellocad.MIT.dnacompiler.CelloMain.main (CelloMain.java:15)
-        at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
-        at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:62)
-        at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
-        at java.lang.reflect.Method.invoke (Method.java:566)
-        at org.codehaus.mojo.exec.ExecJavaMojo$1.run (ExecJavaMojo.java:293)
-        at java.lang.Thread.run (Thread.java:834)
-    [INFO] ------------------------------------------------------------------------
-    [INFO] BUILD FAILURE
-    [INFO] ------------------------------------------------------------------------
-    [INFO] Total time:  40.472 s
-    [INFO] Finished at: 2024-03-06T16:14:09+01:00
-    [INFO] ------------------------------------------------------------------------
-    [ERROR] Failed to execute goal org.codehaus.mojo:exec-maven-plugin:1.4.0:java (default) on project cellocad: An exception occured while executing the Java class. null: InvocationTargetException: Error in abstract circuit.  Exiting. -> [Help 1]
-    [ERROR]
-    [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
-    [ERROR] Re-run Maven using the -X switch to enable full debug logging.
-    [ERROR]
-    [ERROR] For more information about the errors and possible solutions, please read the following articles:
-    [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
-    ```
-    
-    - Trying the python CLI :
-    - Doesn’t work : permission denied
+- When clicking on run nothing happens
+- Trying the python CLI :
+        Doesn’t work : permission denied
         
         ```jsx
         pip install --editable .
@@ -205,9 +141,9 @@ Had to modify BaseController at line 35 from i = 0 to i=2 so that the C: in wind
         
         ```jsx
         note: This error originates from a subprocess, and is likely not a problem with pip.
-        ```
+        ```jsx
         
-    - Same with another call
+- Same with another call
         
         ```jsx
         python cello_client.py submit --jobid "job_1709804965351" --verilog "C:/Users/Séléna/Cello/cello/demo/demo_verilog.v" --inputs "C:/Users/Séléna/Cello/cello/demo/demo_inputs.txt" --outputs "C:/Users/Séléna/Cello/cello/demo/demo_outputs.txt"
@@ -319,22 +255,90 @@ Had to modify BaseController at line 35 from i = 0 to i=2 so that the C: in wind
         requests.exceptions.ConnectionError: HTTPConnectionPool(host='127.0.0.1', port=8080): Max retries exceeded with url: /submit?id=job_1709804965351&input_promoter_data=pBAD+0.0082+2.5+ACTTTTCATACTCCCGCCATTCAGAGAAGAAACCAATTGTCCATATTGCATCAGACATTGCCGTCACTGCGTCTTTTACTGGCTCTTCTCGCTAACCAAACCGGTAACCCCGCTTATTAAAAGCATTCTGTAACAAAGCGGGACCAAAGCCATGACAAAAACGCGTAACAAAAGTGTCTATAATCACGGCAGAAAAGTCCACATTGATTATTTGCACGGCGTCACACTTTGCTATGCCATAGCATTTTTATCCATAAGATTAGCGGATCCTACCTGACGCTTTTTATCGCAACTCTCTACTGTTTCTCCATACCCGTTTTTTTGGGCTAGC%0ApTac+0.0034+2.8+AACGATCGTTGGCTGTGTTGACAATTAATCATCGGCTCGTATAATGTGTGGAATTGTGAGCGCTCACAATT%0A&output_gene_data=RFP+CTGAAGTGGTCGTGATCTGAAACTCGATCACCTGATGAGCTCAAGGCAGAGCGAAACCACCTCTACAAATAATTTTGTTTAATACTAGAGTCACACAGGAAAGTACTAGATGGCTTCCTCCGAAGACGTTATCAAAGAGTTCATGCGTTTCAAAGTTCGTATGGAAGGTTCCGTTAACGGTCACGAGTTCGAAATCGAAGGTGAAGGTGAAGGTCGTCCGTACGAAGGTACCCAGACCGCTAAACTGAAAGTTACCAAAGGTGGTCCGCTGCCGTTCGCTTGGGACATCCTGTCCCCGCAGTTCCAGTACGGTTCCAAAGCTTACGTTAAACACCCGGCTGACATCCCGGACTACCTGAAACTGTCCTTCCCGGAAGGTTTCAAATGGGAACGTGTTATGAACTTCGAAGACGGTGGTGTTGTTACCGTTACCCAGGACTCCTCCCTGCAAGACGGTGAGTTCATCTACAAAGTTAAACTGCGTGGTACCAACTTCCCGTCCGACGGTCCGGTTATGCAGAAAAAAACCATGGGTTGGGAAGCTTCCACCGAACGTATGTACCCGGAAGACGGTGCTCTGAAAGGTGAAATCAAAATGCGTCTGAAACTGAAAGACGGTGGTCACTACGACGCTGAAGTTAAAACCACCTACATGGCTAAAAAACCGGTTCAGCTGCCGGGTGCTTACAAAACCGACATCAAACTGGACATCACCTCCCACAACGAAGACTACACCATCGTTGAACAGTACGAACGTGCTGAAGGTCGTCACTCCACCGGTGCTTAATAACAGATAAAAAAAATCCTTAGCTTTCGCTAAGGATGATTTCT%0A&verilog_text=module+A%28output+out1%2C++input+in1%2C+in2%29%3B%0A++always%40%28in1%2Cin2%29%0A++++begin%0A++++++case%28%7Bin1%2Cin2%7D%29%0A++++++++2%27b00%3A+%7Bout1%7D+%3D+1%27b0%3B%0A++++++++2%27b01%3A+%7Bout1%7D+%3D+1%27b0%3B%0A++++++++2%27b10%3A+%7Bout1%7D+%3D+1%27b0%3B%0A++++++++2%27b11%3A+%7Bout1%7D+%3D+1%27b1%3B%0A++++++endcase%0A++++end%0Aendmodule%0A (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000029CEFCF7610>: Failed to establish a new connection: [WinError 10061] Aucune connexion n’a pu être établie car l’ordinateur cible l’a expressément refusée'))
         ```
         
+- When running in the command line interface, I get the errors :
+    
+    ```
+    mvn -f ../pom.xml -DskipTests=true -PCelloMain -Dexec.args="-verilog demo_verilog.v -input_promoters demo_inputs.txt -output_genes demo_outputs.txt"
+    
+    ```
+    
+    ```jsx
+    org.cellocad.BU.netsynth.Utilities getFileContentAsStringList
+    SEVERE: null
+    
+    java.io.FileNotFoundException: job_1709738047825\netSynth\abcOutput.bench (Le fichier sp▒cifi▒ est introuvable)
+            at java.base/java.io.FileInputStream.open0(Native Method)
+            at java.base/java.io.FileInputStream.open(FileInputStream.java:219)
+            at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
+            at java.base/java.io.FileReader.<init>(FileReader.java:75)
+            at org.cellocad.BU.netsynth.Utilities.getFileContentAsStringList(Utilities.java:230)
+            at org.cellocad.BU.adaptors.ABCAdaptor.convertBenchToAIG(ABCAdaptor.java:177)
+            at org.cellocad.BU.adaptors.ABCAdaptor.runABC(ABCAdaptor.java:153)
+            at org.cellocad.BU.netsynth.NetSynth.runEspressoAndABC(NetSynth.java:990)
+            at org.cellocad.BU.netsynth.NetSynth.getNetlistCode(NetSynth.java:679)
+            at org.cellocad.BU.netsynth.NetSynth.getNetlist(NetSynth.java:560)
+            at org.cellocad.BU.netsynth.NetSynth.runNetSynth(NetSynth.java:511)
+            at org.cellocad.BU.netsynth.NetSynth.runNetSynth(NetSynth.java:497)
+            at org.cellocad.MIT.dnacompiler.DNACompiler.getAbstractCircuit(DNACompiler.java:1722)
+            at org.cellocad.MIT.dnacompiler.DNACompiler.run(DNACompiler.java:235)
+            at org.cellocad.MIT.dnacompiler.CelloMain.main(CelloMain.java:15)
+            at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+            at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+            at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+            at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+            at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:293)
+            at java.base/java.lang.Thread.run(Thread.java:834)
+    
+    mars 06, 2024 4:14:09 PM org.cellocad.BU.netsynth.Utilities getFileContentAsStringList
+    SEVERE: null
+    [WARNING]
+    java.lang.reflect.InvocationTargetException
+        at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
+        at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:62)
+        at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
+        at java.lang.reflect.Method.invoke (Method.java:566)
+        at org.codehaus.mojo.exec.ExecJavaMojo$1.run (ExecJavaMojo.java:293)
+        at java.lang.Thread.run (Thread.java:834)
+    Caused by: java.lang.IllegalStateException: Error in abstract circuit.  Exiting.
+        at org.cellocad.MIT.dnacompiler.DNACompiler.run (DNACompiler.java:237)
+        at org.cellocad.MIT.dnacompiler.CelloMain.main (CelloMain.java:15)
+        at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
+        at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:62)
+        at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
+        at java.lang.reflect.Method.invoke (Method.java:566)
+        at org.codehaus.mojo.exec.ExecJavaMojo$1.run (ExecJavaMojo.java:293)
+        at java.lang.Thread.run (Thread.java:834)
+    [INFO] ------------------------------------------------------------------------
+    [INFO] BUILD FAILURE
+    [INFO] ------------------------------------------------------------------------
+    [INFO] Total time:  40.472 s
+    [INFO] Finished at: 2024-03-06T16:14:09+01:00
+    [INFO] ------------------------------------------------------------------------
+    [ERROR] Failed to execute goal org.codehaus.mojo:exec-maven-plugin:1.4.0:java (default) on project cellocad: An exception occured while executing the Java class. null: InvocationTargetException: Error in abstract circuit.  Exiting. -> [Help 1]
+    [ERROR]
+    [ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+    [ERROR] Re-run Maven using the -X switch to enable full debug logging.
+    [ERROR]
+    [ERROR] For more information about the errors and possible solutions, please read the following articles:
+    [ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+    ```
 
-- FINALLY WORKED (by executing the source code)!!!!! The problem was that the abcOutput.bench file was not created. Had to modify the following files (but also had to create another computer session with selena instead of Séléna because the special characters were a pain in the a**, maybe there is no need for the changes with this new username)
-    - Line 129 ABCadaptator
+
+--> The problem was that the abcOutput.bench file was not created. Had to modify the following files (but also had to create another computer session with selena instead of Séléna because the special characters were a pain in the a**, maybe there is no need for the changes with this new username)
+- Line 129 in ABCadaptator
         
         ```jsx
         commandBuilder = new StringBuilder("cd " + resourcesFilePath.substring(0, resourcesFilePath.length()-1) + " && " + resourcesFilePath + "abc.exe -c \"read " + resultsFilepath + filename + ".blif; strash;  rewrite; refactor; balance; write " + resultsFilepath + "abcOutput.bench; quit\" && " + "cd " + current_directory);
         ```
         
-        instead of 
+instead of 
         
         ```jsx
         commandBuilder = new StringBuilder(resourcesFilePath + "abc.exe -c \"read " + resultsFilepath + filename + ".blif; strash;  rewrite; refactor; balance; write " + resultsFilepath + "abcOutput.bench; quit\"");
         ```
         
     
-    - In NetSynth lines 1002 - 1004
+- In NetSynth lines 1002 - 1004
         
         ```jsx
         String true_results_path = this.resultsPath.substring(0,17) + this.resultsPath.substring(18);
@@ -342,8 +346,8 @@ Had to modify BaseController at line 35 from i = 0 to i=2 so that the C: in wind
         abcoutput = ABCAdaptor.*runABC*("Blif_File_EsABC", this.resourcesPath, new_results_path, this.wirecount);
         ```
         
-    
-- Now everything works but don’t have the visual respresentations, get the error :
+## Fixing visual representation issues
+--> Now everything works but don’t have the visual respresentations, get the error :
     
     ```jsx
     =========== SBOL for circuit plasmids ========
@@ -383,7 +387,8 @@ Had to modify BaseController at line 35 from i = 0 to i=2 so that the C: in wind
     at java.base/java.lang.Thread.run(Thread.java:834)
     ```
     
-    Lines 114 -> 128 in SBOLCircuitWriter 
+- Solution :
+     - Lines 114 -> 128 in SBOLCircuitWriter 
     
     ```
          // Check if the component already has a SequenceAnnotation
@@ -411,26 +416,26 @@ Had to modify BaseController at line 35 from i = 0 to i=2 so that the C: in wind
                 sequenceAnnotation.setComponent(c.getIdentity());
     ```
     
-    Then for the error :
+  - Then for the error :
     
     ```jsx
     org.sbolstandard.core2.SBOLValidationException: sbol-12003: The FunctionalComponent referenced by the participant property of a Participation MUST be contained by the ModuleDefinition that contains the Interaction which contains the Participation.
     Reference: SBOL Version 2.1.0 Section 7.9.4 on page 44
     ```
     
-    Need to change all the calls to the functions .createParticipation, the second argument needs to be .getIdentity(), for example protein_fc.getIdentity() instead of proteinParticipationID
+    - Need to change all the calls to the functions .createParticipation, the second argument needs to be .getIdentity(), for example protein_fc.getIdentity() instead of proteinParticipationID
     
 
-—> Everything worked except for the images of the circuit 
+—-> Everything works except for the images of the circuit 
 
 - Problem with the function *writeCircuitsForDNAPlotLib* line 1330 in [DNACompiler.java](http://DNACompiler.java) —> it calls the python script /resources/scripts/plot_SBOL_designs.py incorrectly
-    - Had to change the command to execute from
-        
+    - Had to change the command to execute 
+        instead of :
         ```jsx
         python_exe + " -W ignore " + options.get_home() + "/resources/scripts/plot_SBOL_designs.py";
         ```
         
-        to 
+        use : 
         
         ```jsx
         python_exe + " -W ignore " + options.get_home().substring(1) + "/resources/scripts/plot_SBOL_designs.py";
@@ -438,4 +443,6 @@ Had to modify BaseController at line 35 from i = 0 to i=2 so that the C: in wind
         
     - Had to change the python script : instead of ‘rU’ option as argument in the open function I used ‘r’ (lines 47, 60, 83, 119)
 
-WORKS PERFECTLY
+WORKS PERFECTLY with these modifications : can run any veriolog file with the specified inputs and outputs 
+
+**Need the APE software to read the .ape files and create the images of the plasmid circuits**
