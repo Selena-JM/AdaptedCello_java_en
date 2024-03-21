@@ -345,15 +345,7 @@ instead of
 ``` 
 commandBuilder = new StringBuilder(resourcesFilePath + "abc.exe -c \"read " + resultsFilepath + filename + ".blif; strash;  rewrite; refactor; balance; write " + resultsFilepath + "abcOutput.bench; quit\"");
 ```
-    
-    
-- In NetSynth lines 1002 - 1004
-        
-    ``` 
-    String true_results_path = this.resultsPath.substring(0,17) + this.resultsPath.substring(18);
-    String new_results_path = System.*getProperty*("user.dir")+ "\\" + true_results_path;
-    abcoutput = ABCAdaptor.*runABC*("Blif_File_EsABC", this.resourcesPath, new_results_path, this.wirecount);
-    ```
+
         
 ## Fixing visual representation issues
 --> Now everything works but don’t have the visual respresentations, get the error :
