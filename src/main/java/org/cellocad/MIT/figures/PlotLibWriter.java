@@ -57,7 +57,7 @@ public class PlotLibWriter {
 
         String python_exe = "python";
 
-        String cmd = python_exe + " -W ignore " + options.get_home().substring(1) + "/resources/scripts/plot_SBOL_designs.py"; // python_exe + " -W ignore " + options.get_home() + "/resources/scripts/plot_SBOL_designs.py";
+        String cmd = python_exe + " -W ignore " + options.get_home() + "/resources/scripts/plot_SBOL_designs.py"; // python_exe + " -W ignore " + options.get_home().substring(1) + "/resources/scripts/plot_SBOL_designs.py";
         cmd += " -params "  + params;
         cmd += " -parts "   + parts;
         cmd += " -designs " + designs;

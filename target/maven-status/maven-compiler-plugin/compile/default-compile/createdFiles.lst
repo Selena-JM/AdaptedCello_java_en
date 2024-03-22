@@ -3,7 +3,6 @@ org\cellocad\BU\dom\DWire$DWireValue.class
 org\cellocad\BU\subcircuit\isomorphicFunction.class
 org\cellocad\adaptors\ucfwriters\ucf_writers_LacI_TetR\collection_writer_response_functions.class
 org\cellocad\BU\parseVerilog\grammar\Verilog2001Parser$Reject_limit_valueContext.class
-org\cellocad\BU\adaptors\ABCAdaptor.class
 org\cellocad\BU\parseVerilog\grammar\Verilog2001Parser$Unary_module_path_operatorContext.class
 org\cellocad\BU\parseVerilog\grammar\Verilog2001Parser$Start_edge_offsetContext.class
 org\cellocad\MIT\heuristicsearch\Synthetic_Gates.class

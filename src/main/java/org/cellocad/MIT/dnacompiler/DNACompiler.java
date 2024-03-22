@@ -238,8 +238,6 @@ public class DNACompiler {
         }
 
 
-
-
         /**
          * A logic circuit must have at least one input gate and one output gate
          */
@@ -1659,9 +1657,9 @@ public class DNACompiler {
      */
     public LogicCircuit getAbstractCircuit(String verilog_filepath, UCF ucf) throws IOException, ParseException {
 
-        if(_options.get_circuit_type() == CircuitType.sequential) {
+    	if(_options.get_circuit_type() == CircuitType.sequential) {
 
-            if( ! _options.get_synthesis().equals("originalstructural")) {
+    		if( ! _options.get_synthesis().equals("originalstructural")) {
                 throw new IllegalStateException("ARGUMENTS: sequential logic requires originalstructural logic synthesis.");
             }
 

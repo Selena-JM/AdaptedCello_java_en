@@ -1,6 +1,7 @@
 package org.cellocad.MIT.figures;
 
 
+import org.cellocad.BU.netsynth.Utilities;
 import org.cellocad.MIT.dnacompiler.*;
 import org.cellocad.MIT.tandem_promoter.InterpolateTandemPromoter;
 
@@ -12,7 +13,13 @@ public class Gnuplot {
 
     public Gnuplot(String home, String output_directory, String dateID) {
         _home = home;
-        _output_directory = output_directory;
+        String x = System.getProperty("os.name");
+        if (output_directory.substring(0,6).equals("/Users") && Utilities.isWindows(x)) {
+        	_output_directory = "C:" + output_directory;
+        }
+        else {
+        	_output_directory = output_directory;
+        }
         _dateID = dateID;
     }
 
@@ -468,6 +475,7 @@ public class Gnuplot {
 
         String cmd = "perl " + _home + "/resources/scripts/make_conv_multiplot.pl " + _output_directory + " " + _dateID + " " + name_conv_rpus + " " + logic_string + " " + input_truth;
         Util.executeCommand(cmd);
+        System.out.println("Command makeHistogramMultiplotGate : " + cmd);
     }
 
 
@@ -502,6 +510,8 @@ public class Gnuplot {
             logic_string = logic_string.replaceAll("[^\\d.]", "");
             String cmd = "perl " + _home + "/resources/scripts/make_conv_multiplot.pl " + _output_directory + " " + _dateID + " " + name_conv_rpus + " " + logic_string + " " + input_truth;
             String command_result = Util.executeCommand(cmd);
+            System.out.println("Command makeHistogramMultiplot : " + cmd);
+            System.out.println(command_result);
         }
     }
 

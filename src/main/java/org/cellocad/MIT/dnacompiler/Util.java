@@ -61,6 +61,13 @@ public class Util{
                 }
                 reader.close();
             }
+            try (BufferedReader errorReader = new BufferedReader(new InputStreamReader(p.getErrorStream()))) {
+                String line;
+                while ((line = errorReader.readLine()) != null) {
+                    System.err.println("Error: " + line);
+                }
+                errorReader.close();
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 
-$ENV{'PATH'} = '/bin:/usr/bin:/usr/local/bin';
+# $ENV{'PATH'} = '/bin:/usr/bin:/usr/local/bin';
 
 
 my $location = $ARGV[0];
@@ -104,5 +104,5 @@ for(my $i=1; $i<=$rows; ++$i) {
 print GP "unset multiplot\n";
 
 system("gnuplot $gp");
-system("ps2pdf -dPDFSETTINGS=/prepress -dEPSCrop -r100 $eps");
+system("ps2pdf -dEPSCrop -r100 $eps"); # -dPDFSETTINGS=/prepress
 system("gs -dQUIET -dNOPAUSE -dBATCH -sDEVICE=pngalpha -sOutputFile=$png -r80 $pdf");

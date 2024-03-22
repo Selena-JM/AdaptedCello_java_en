@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
     <!-- Other CSS -->
-    <link rel="stylesheet" href="http://codemirror.net/lib/codemirror.css">
+    <link rel="stylesheet" href="codemirror/codemirror.css">  <!--"http://codemirror.net/lib/codemirror.css" -->
     <link href="css/neat.css" rel="stylesheet" type="text/css">
     <link href="css/main.css" rel="stylesheet" type="text/css">
 
@@ -141,7 +141,7 @@
 
         <div align="center" style="margin-top: 10px">
             <input type="text" id="design_name" required style="display: block" autocomplete="off" placeholder="design name" pattern="[A-Za-z][A-Za-z0-9_-]+" title="starts with letter, contains only alphanumeric, dash, underscore characters">
-            <!--<button class="btn btn-lg btn-white" style="display: block" id="validate"  type="button" onclick="getNetlist()">Validate Verilog</button>-->
+            <!-- <button class="btn btn-lg btn-white" style="display: block" id="validate"  type="button" onclick="getNetlist()">Validate Verilog</button> -->
             <button class="btn btn-lg btn-success" style="display: block" id="submit">Run</button>
             <button class="btn btn-lg" style="display: none" id="running"   type="button">Running...</button>
         </div>
@@ -214,7 +214,7 @@
 
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-<script src="http://codemirror.net/lib/codemirror.js"></script>
+<script src="codemirror/codemirror.js"></script>
 <script type="text/javascript" src="js/session_controller.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="js/verilog_codemirror.js"></script>

@@ -999,9 +999,7 @@ public class NetSynth {
             List<DGate> abcoutput = new ArrayList<DGate>();
 
             try {
-            	String true_results_path = this.resultsPath.substring(0,17) + this.resultsPath.substring(18);
-            	String new_results_path = System.getProperty("user.dir")+ "\\" + true_results_path;
-                abcoutput = ABCAdaptor.runABC("Blif_File_EsABC", this.resourcesPath, new_results_path, this.wirecount);
+                abcoutput = ABCAdaptor.runABC("Blif_File_EsABC", this.resourcesPath, this.resultsPath, this.wirecount); 
 
             } catch (InterruptedException ex) {
                 Logger.getLogger(NetSynth.class.getName()).log(Level.SEVERE, null, ex);

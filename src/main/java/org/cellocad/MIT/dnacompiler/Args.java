@@ -133,7 +133,10 @@ public class Args {
         String sourcePath = rootPath + "/" + sourceDir;
         sourcePath = sourcePath.replace("//", "/");
 
-        this._home = sourcePath;
+        this._home = sourcePath.substring(1);
+//        System.out.println("Old home : " + sourcePath);
+//        System.out.println("New home : " + this._home);
+        
     }
 
 

@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 
 
-$ENV{'PATH'} = '/bin:/usr/bin:/usr/local/bin';
+# $ENV{'PATH'} = '/bin:/usr/bin:/usr/local/bin';
 
 my $location = $ARGV[0];
 chdir($location);
