@@ -347,11 +347,11 @@ Had to modify BaseController at line 35 from i = 0 to i=2 so that the C: in wind
     commandBuilder = new StringBuilder(resourcesFilePath + "abc.exe -c \"read " + new_results_path + filename + ".blif; strash;  rewrite; refactor; balance; write " + new_results_path + "abcOutput.bench; quit\"");
     ```
         
-instead of 
-    
-``` 
-commandBuilder = new StringBuilder(resourcesFilePath + "abc.exe -c \"read " + resultsFilepath + filename + ".blif; strash;  rewrite; refactor; balance; write " + resultsFilepath + "abcOutput.bench; quit\"");
-```
+    instead of 
+        
+    ``` 
+    commandBuilder = new StringBuilder(resourcesFilePath + "abc.exe -c \"read " + resultsFilepath + filename + ".blif; strash;  rewrite; refactor; balance; write " + resultsFilepath + "abcOutput.bench; quit\"");
+    ```
 
         
 ## Fixing visual representation issues
@@ -434,10 +434,8 @@ at java.base/java.lang.Thread.run(Thread.java:834)
     - Need to change all the calls to the functions .createParticipation, the second argument needs to be .getIdentity(), for example protein_fc.getIdentity() instead of proteinParticipationID
     
 
-—-> Everything works except for the images of the circuit 
+—-> Everything works except for the output images
 
-- Problem with the function *writeCircuitsForDNAPlotLib* line 1330 in [DNACompiler.java](http://DNACompiler.java) —> it calls the python script /resources/scripts/plot_SBOL_designs.py incorrectly
-    - Had to change the python script : instead of ‘rU’ option as argument in the open function I used ‘r’ (lines 47, 60, 83, 119)
 - Problem with the function *writeCircuitsForDNAPlotLib* line 1330 in [DNACompiler.java](http://DNACompiler.java) —> it calls the python script /resources/scripts/plot_SBOL_designs.py incorrectly
     - Had to change the python script : instead of ‘rU’ option as argument in the open function I used ‘r’ (lines 47, 60, 83, 119)
 
@@ -462,7 +460,7 @@ at java.base/java.lang.Thread.run(Thread.java:834)
     - ghostscript
     - gnuplot
 
-- Need to modify the perl scripts to remove :
+- Need to modify all the perl scripts in resources>scripts to remove :
     
     ``` 
     $ENV{'PATH'} = '/bin:/usr/bin:/usr/local/bin';
