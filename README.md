@@ -334,10 +334,17 @@ Had to modify BaseController at line 35 from i = 0 to i=2 so that the C: in wind
 
 
 --> The problem was that the abcOutput.bench file was not created. Had to modify the following files (but also had to create another computer session with selena instead of Séléna because the special characters were a pain in the a**, maybe there is no need for the changes with this new username)
-- Line 129 in ABCadaptator
+- Line 129 in ABCadaptator in the method runABC : it depends on whether we use the web app or the src code in the command line, when using the web app no need to change the results path but when using the command line it is necessary 
         
     ``` 
-    commandBuilder = new StringBuilder("cd " + resourcesFilePath.substring(0, resourcesFilePath.length()-1) + " && " + resourcesFilePath + "abc.exe -c \"read " + resultsFilepath + filename + ".blif; strash;  rewrite; refactor; balance; write " + resultsFilepath + "abcOutput.bench; quit\" && " + "cd " + current_directory);
+    if (resultsFilepath.substring(0,4).equals("job_")) {
+    String true_results_path = resultsFilepath.substring(0,17) + resultsFilepath.substring(18);
+    new_results_path = current_directory + "\\" + true_results_path;
+    }
+    else {
+    new_results_path = resultsFilepath;
+    }
+    commandBuilder = new StringBuilder(resourcesFilePath + "abc.exe -c \"read " + new_results_path + filename + ".blif; strash;  rewrite; refactor; balance; write " + new_results_path + "abcOutput.bench; quit\"");
     ```
         
 instead of 
@@ -430,16 +437,128 @@ at java.base/java.lang.Thread.run(Thread.java:834)
 —-> Everything works except for the images of the circuit 
 
 - Problem with the function *writeCircuitsForDNAPlotLib* line 1330 in [DNACompiler.java](http://DNACompiler.java) —> it calls the python script /resources/scripts/plot_SBOL_designs.py incorrectly
-    - Had to change the command to execute 
-        instead of :
-        ``` 
-        python_exe + " -W ignore " + options.get_home() + "/resources/scripts/plot_SBOL_designs.py";
-        ```
-        
-        use : 
-        
-        ``` 
-        python_exe + " -W ignore " + options.get_home().substring(1) + "/resources/scripts/plot_SBOL_designs.py";
-        ```
-        
     - Had to change the python script : instead of ‘rU’ option as argument in the open function I used ‘r’ (lines 47, 60, 83, 119)
+- Problem with the function *writeCircuitsForDNAPlotLib* line 1330 in [DNACompiler.java](http://DNACompiler.java) —> it calls the python script /resources/scripts/plot_SBOL_designs.py incorrectly
+    - Had to change the python script : instead of ‘rU’ option as argument in the open function I used ‘r’ (lines 47, 60, 83, 119)
+
+- Need to change the link of codemirror to the internal link in the verilog.html file in src>main>webapp
+
+- Need to change the _home definition in the initiator in Args()
+    
+    ``` 
+    this._home = sourcePath.substring(1);
+    ```
+    
+    instead of 
+    
+    ``` 
+    this._home = sourcePath;
+    ```
+    
+
+- Need to install softwares and add them to the path :
+    - perl
+    - graphviz
+    - ghostscript
+    - gnuplot
+
+- Need to modify the perl scripts to remove :
+    
+    ``` 
+    $ENV{'PATH'} = '/bin:/usr/bin:/usr/local/bin';
+    ```
+    
+
+- Need to modify convert_this_dot2png.pl :
+    
+    ``` 
+    system("dot -Tpng $dot > $png");
+    ```
+    
+    instead of 
+    
+    ``` 
+    system("convert -density 200 -transparent white $svg $png");
+    ```
+    
+
+- Need to modify make_gnu_rpu.pl :
+    
+    ``` 
+    my @files = glob("${dateID}_xfer*.gp"); #$location
+    
+    foreach my $file(@files) {
+        chomp($file);
+        my $eps = substr($file, 0, -3) . ".eps";
+        my $pdf = substr($file, 0, -3) . ".pdf";
+        my $png = substr($file, 0, -3) . ".png";
+        system("gnuplot $file");
+        system("ps2pdf -dEPSCrop $eps $pdf"); # system("ps2pdf -dPDFSETTINGS=/prepress -dEPSCrop -r100 $eps $pdf");
+        system("gs -dQUIET -dNOPAUSE -dBATCH -sDEVICE=pngalpha -sOutputFile=$png -r300 $pdf");
+    }
+    ```
+    
+    instead of 
+    
+    ``` 
+    my $gpquery = $dateID . "*xfer*.gp";
+    my @files = qx{ls $gpquery}; 
+    
+    foreach my $file(@files) {
+        chomp($file);
+        my $eps = substr($file, 0, -3) . ".eps";
+        my $pdf = substr($file, 0, -3) . ".pdf";
+        my $png = substr($file, 0, -3) . ".png";
+        system("gnuplot $file");
+        system("ps2pdf -dPDFSETTINGS=/prepress -dEPSCrop $eps $pdf"); 
+        system("gs -dQUIET -dNOPAUSE -dBATCH -sDEVICE=pngalpha -sOutputFile=$png -r300 $pdf");
+    }
+    ```
+    
+
+- Need to modify make_conv_multiplot.pl :
+    
+    ``` 
+    system("ps2pdf -dEPSCrop -r100 $eps"); # -dPDFSETTINGS=/prepress
+    ```
+    
+    instead of 
+    
+    ``` 
+    system("ps2pdf -dPDFSETTINGS=/prepress -dEPSCrop -r100 $eps");
+    ```
+    
+- Need to change the output_directories
+    - In initiator of ScriptCommands
+        
+        ```java
+        if (output_directory.substring(0,6).equals("/Users") && Utilities.isWindows(x)) {
+        	_output_directory = "C:" + output_directory;
+        }
+        else {
+        	_output_directory = output_directory;
+        }
+        ```
+        
+        instead of 
+        
+        ``` 
+        _output_directory = output_directory;
+        ```
+        
+    - In initiator of Gnuplot
+        
+        ```
+        if (output_directory.substring(0,6).equals("/Users") && Utilities.isWindows(x)) {
+        	_output_directory = "C:" + output_directory;
+        }
+        else {
+        	_output_directory = output_directory;
+        }
+        ```
+        
+        instead of 
+        
+        ``` 
+        _output_directory = output_directory;
+        ```
