@@ -13,9 +13,6 @@ public class ScriptCommands {
 //        _home = home.substring(1);
         _home = home;
         String x = System.getProperty("os.name");
-        System.out.println(output_directory.substring(0,6));
-        System.out.println(output_directory.substring(0,6)=="/Users");
-        System.out.println(output_directory.substring(0,6).equals("/Users"));
         if (output_directory.substring(0,6).equals("/Users") && Utilities.isWindows(x)) {
         	_output_directory = "C:" + output_directory;
         }
@@ -72,9 +69,9 @@ public class ScriptCommands {
      ***********************************************************************/
     public void makeDot2Png(String dotfile) {
         String cmd = "perl " + _home + "/resources/scripts/convert_this_dot2png.pl " + _output_directory + " " + dotfile;
-        System.out.println("command : " + cmd);
+        System.out.println("Command makeDot2Png: " + cmd);
         String command_result = Util.executeCommand(cmd);
-        System.out.println("Output:\n" + command_result);
+        System.out.println(command_result);
     }
 
     /***********************************************************************

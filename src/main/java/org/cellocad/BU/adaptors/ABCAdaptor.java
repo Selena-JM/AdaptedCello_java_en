@@ -127,8 +127,6 @@ public class ABCAdaptor {
             commandBuilder = new StringBuilder(resourcesFilePath + "abc -c \"read " + resultsFilepath + filename + ".blif; strash;  rewrite; refactor; balance; write " + resultsFilepath + "abcOutput.bench; quit\"");
         } else if (Utilities.isWindows(x)) {
         	String new_results_path = null;
-        	System.out.println(resultsFilepath);
-        	System.out.println(resultsFilepath.substring(0,6).equals("/Users"));
         	if (resultsFilepath.substring(0,4).equals("job_")) {
 	        	String true_results_path = resultsFilepath.substring(0,17) + resultsFilepath.substring(18);
 	        	new_results_path = current_directory + "\\" + true_results_path;
@@ -136,7 +134,6 @@ public class ABCAdaptor {
         	else {
 	        	new_results_path = resultsFilepath;
 	        }
-        	System.out.println(new_results_path);
         	commandBuilder = new StringBuilder("cd " + resourcesFilePath.substring(0, resourcesFilePath.length()-1) + " && " + resourcesFilePath + "abc.exe -c \"read " + new_results_path + filename + ".blif; strash;  rewrite; refactor; balance; write " + new_results_path + "abcOutput.bench; quit\" && " + "cd " + current_directory);
         }
         String command = commandBuilder.toString();
