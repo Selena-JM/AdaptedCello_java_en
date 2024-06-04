@@ -10,6 +10,7 @@ To use this app there are 2 ways :
 You have to create a folder named "cello_results" inside the folder where you cloned this repository. For example if you named you project Project1 and cloned this repository inside the folder, create the folder cello_results inside Project1 : 
 
 Project1 -> cello (this repository cloned)
+
          -> cello_results 
 1) Web application
 - Run the following in a git bash window 
