@@ -12,7 +12,7 @@ You have to create a folder named "cello_results" inside the folder where you cl
 1) Web application
 - Run the following in a git bash window 
    ```
-    cd ~/cello/
+    cd pathToThisRepositoryCloned/
     mvn compile
     mvn spring-boot:run
     ```
