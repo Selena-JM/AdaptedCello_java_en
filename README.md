@@ -1,12 +1,31 @@
 # Adaptations done to the source code for the Cello app to work
-This app is supposed to work without installing anything at [www.cellocad.org](http://www.cellocad.org/) but does not (probably because of permission changes in the repo.string.io repository) so here are all the modifications to the source code to get it to work properly.
+This app is supposed to work without installing anything at [www.cellocad.org](http://www.cellocad.org/) but does not (probably because of permission changes in the repo.string.io repository) so here are all the modifications to the source code to get it to work properly. 
 
-To use this app, open git bash in one of the folders in the trials folder, and use the command 
+You may clone this repository to use the Cello app with my modifications. Note that some of the modifications may not have been needed at the end, but it works as is.
+
+To use this app there are 2 ways : 
+1) Web application
+- Run the following in a git bash window 
+   ```
+    cd ~/cello/
+    mvn compile
+    mvn spring-boot:run
+    ```
+- Go to : http://127.0.0.1:8080 and create an ID and password, then use the app as you want. There will be a folder with your ID in the folder cello_results created earlier. All your results will be stored in the folder with your ID. You may create several users, that will create several folders with the differents IDs you used and save the results in the right folders.
+   
+3) Executing the compiled source code
+- Go to the trials folder
+- Go to any of the folders within, let's say you pick the "demo" folder.
+- Open git bash
+- Use the command 
 
 ```
 bash command.txt
 ```
 This will run the command written in the command file. This file, along with the veriolg file and the input/output text files can be modified to suit your needs. See the RUN.md file for examples of commands, especially if you want to use another UCF file.
+- See the results in the latest "job_smtg" folder, in the "demo" folder you already are.
+
+
 
 **Note that you need the APE software to read the .ape files created by Cello and create the images of the plasmid circuits like the one below**
 
