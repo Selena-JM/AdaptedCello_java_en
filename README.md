@@ -20,7 +20,8 @@ Note that some of the modifications may not have been needed at the end, but it 
     mvn compile
     mvn spring-boot:run
     ```
-- Go to : http://127.0.0.1:8080 and create an ID and password, then use the app as you want. There will be a folder with your ID in the folder cello_results created earlier. All your results will be stored in the folder with your ID. You may create several users, that will create several folders with the differents IDs you used and save the results in the right folders.
+- Go to : http://127.0.0.1:8080 and create an ID and password, then use the app as you want.
+- There will be a folder with your ID in the folder cello_results created earlier. All your results will be stored in the folder with your ID. You may create several users, that will create several folders with the differents IDs you used and save the results in the right folders.
    
 2.2) Executing the compiled source code
 
@@ -35,15 +36,15 @@ bash command.txt
 This will run the command written in the command file. This file, along with the veriolg file and the input/output text files can be modified to suit your needs. See the RUN.md file for examples of commands, especially if you want to use another UCF file.
 - See the results in the latest "job__something_" folder, in the "demo" folder you already are.
 
-
-
-**Note that you need the APE software to read the .ape files created by Cello and create the images of the plasmid circuits like the one below**
+**Note that when running the app this way, you need the APE software to read the .ape files created by Cello and create the images of the plasmid circuits like the one below**
 
 
 <img width="353" alt="Screenshot 2024-03-19 142847" src="https://github.com/Selena-JM/Adapted_cello_java/assets/160735287/4b95c6ba-f3f4-4546-8b31-f41788f05b66">
 
+## Modifications I did 
+In this section are all the modifications I made to the source code. It is basically the notes I took while I was working so it may not me clear and well explained but all the steps are listed.
 
-## Fixing compilation errors
+### Fixing compilation errors
 - Go to https://github.com/CIDARLAB/cello/blob/develop/INSTALL.md for information on how to install
 - The repository used https://repo.spring.io/libs-release has since become private so we cannot access what is in this repository
     - Can still name it in the pom.xml file as a repository but all dependencies need to be installed manually
@@ -75,7 +76,7 @@ This will run the command written in the command file. This file, along with the
 
 —> after that the build was successful 
 
-## Fixing the password problem
+### Fixing the password problem
 When launching the app, a username and password was requested and nothing worked
 
 - Need to change the version of lombok package otherwise we get the error Illegal reflective access by lombok.javac.apt.LombokProcessor
@@ -89,10 +90,10 @@ When launching the app, a username and password was requested and nothing worked
     https://stackoverflow.com/questions/45232071/springboot-401-unauthorized-even-with-out-security
     
 
-## Fixing input/output access issues
+### Fixing input/output access issues
 Had to modify BaseController at line 35 from i = 0 to i=2 so that the C: in windows path becomes only a / and fits the unix path type, otherwise couldn’t access the files in cello_results/SelenaJM/ which are the inputs and outputs
 
-## Fixing the running issue
+### Fixing the running issue
 —> The interface works and can enter the input and outputs but nothing runs
 - When clicking on run nothing happens
 - Trying the python CLI :
@@ -383,7 +384,7 @@ Had to modify BaseController at line 35 from i = 0 to i=2 so that the C: in wind
     ```
 
         
-## Fixing visual representation issues
+### Fixing visual representation issues
 --> Now everything works but don’t have the visual respresentations, get the error :
     
 ``` 
