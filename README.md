@@ -8,7 +8,7 @@ Note that some of the modifications may not have been needed at the end, but it 
 
 ## Steps to use this app : 
 
-1) You have to create a folder named with the name of this repository + _results, inside the folder where you cloned this repository. For example if you named you project Project1 and cloned this repository inside the folder and did not change the name of this repo, then you have to create the folder Adapted_cello_java_en_results inside Project1. If you changed the name of this repo to cello when you cloned it, then you have to create the folder "cello_results" inside the folder Project1.
+1) You have to create a folder named with the name of this repository + _results, inside the folder where you cloned this repository. For example if you named you project Project1 and cloned this repository inside the folder and did not change the name of this repo, then you have to create the folder Adapted_cello_java_en_results inside Project1. If you changed the name of this repo to cello when you cloned it, then you have to create the folder "cello_results" inside the folder Project1. **If the path to Project1 has special characters the app will NOT work**
 
 2) Then there are 2 ways of using this app
    
@@ -33,7 +33,7 @@ Note that some of the modifications may not have been needed at the end, but it 
 bash command.txt
 ```
 This will run the command written in the command file. This file, along with the veriolg file and the input/output text files can be modified to suit your needs. See the RUN.md file for examples of commands, especially if you want to use another UCF file.
-- See the results in the latest "job_smtg" folder, in the "demo" folder you already are.
+- See the results in the latest "job__something_" folder, in the "demo" folder you already are.
 
 
 
