@@ -41,7 +41,7 @@ This will run the command written in the command file. This file, along with the
 
 <img width="353" alt="Screenshot 2024-03-19 142847" src="https://github.com/Selena-JM/Adapted_cello_java/assets/160735287/4b95c6ba-f3f4-4546-8b31-f41788f05b66">
 
-## Modifications I did 
+## Modifications I made
 In this section are all the modifications I made to the source code. It is basically the notes I took while I was working so it may not be clear and well explained but all the steps are listed.
 
 ### Fixing compilation errors
