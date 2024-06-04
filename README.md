@@ -45,10 +45,10 @@ This will run the command written in the command file. This file, along with the
 In this section are all the modifications I made to the source code. It is basically the notes I took while I was working so it may not me clear and well explained but all the steps are listed.
 
 ### Fixing compilation errors
-- Go to https://github.com/CIDARLAB/cello/blob/develop/INSTALL.md for information on how to install
+- I went to https://github.com/CIDARLAB/cello/blob/develop/INSTALL.md for information on how to install, I tried with and without docker for windows.
 - The repository used https://repo.spring.io/libs-release has since become private so we cannot access what is in this repository
     - Can still name it in the pom.xml file as a repository but all dependencies need to be installed manually
-    - Follow the installation without docker (installation of maven and then installation of the local_jars)
+    - Followed the installation without docker (installation of maven and then installation of the local_jars)
     - I wanted to still use docker so I then got back to the installation with docker : See https://stackoverflow.com/questions/55183286/add-local-external-jar-should-not-point-at-files-within-the-project-directory for how to write the dependencies after having installed the jar files. Need to change the following according to the local installation of the jars and not from the repository :
     1. pom.xml file 
     2. dockerfile 
