@@ -1,0 +1,5 @@
+ori_A000_P002 [+Escar, +pSrpR, +BFP, +Xscar, +pBM3R1, +BFP, +Vscar, +pAmtR, +RFP, +Uscar, +pBAD, +YFP, +Cscar]
+ori_A000_P002 [+Escar, +pSrpR, +BFP, +Xscar, +pAmtR, +RFP, +Vscar, +pBM3R1, +BFP, +Uscar, +pBAD, +YFP, +Cscar]
+ori_A000_P002 [+Escar, +pBAD, +YFP, +Xscar, +pSrpR, +BFP, +Vscar, +pBM3R1, +BFP, +Uscar, +pAmtR, +RFP, +Cscar]
+ori_A000_P002 [+Escar, +pSrpR, +BFP, +Xscar, +pBM3R1, +BFP, +Vscar, +pBAD, +YFP, +Uscar, +pAmtR, +RFP, +Cscar]
+ori_A000_P002 [+Escar, +pAmtR, +RFP, +Xscar, +pBM3R1, +BFP, +Vscar, +pSrpR, +BFP, +Uscar, +pBAD, +YFP, +Cscar]
