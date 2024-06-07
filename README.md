@@ -1,24 +1,54 @@
 # Adaptations done to the source code for the Cello app to work
-This app is supposed to work without installing anything at [www.cellocad.org](http://www.cellocad.org/) but does not (probably because of permission changes in the repo.string.io repository) so here are all the modifications to the source code to get it to work properly.
+This app is supposed to work without installing anything at [www.cellocad.org](http://www.cellocad.org/) but does not (probably because of permission changes in the repo.string.io repository) so here are all the modifications to the source code to get it to work properly. 
 
-To use this app, open git bash in one of the folders in the trials folder, and use the command 
+You may clone this repository to use the Cello app with my modifications. 
+
+
+Note that some of the modifications may not have been needed at the end, but it works as is.
+
+## Steps to use this app : 
+
+1) You have to create a folder named with the name of this repository + _results, inside the folder where you cloned this repository. For example if you named you project Project1 and cloned this repository inside the folder and did not change the name of this repo, then you have to create the folder Adapted_cello_java_en_results inside Project1. If you changed the name of this repo to cello when you cloned it, then you have to create the folder "cello_results" inside the folder Project1. **If the path to Project1 has special characters the app will NOT work**
+
+2) Then there are 2 ways of using this app
+   
+2.1) Web application
+
+- Run the following in a git bash window 
+   ```
+    cd pathToThisRepositoryCloned/
+    mvn compile
+    mvn spring-boot:run
+    ```
+- Go to : http://127.0.0.1:8080 and create an ID and password, then use the app as you want.
+- There will be a folder with your ID in the folder cello_results created earlier. All your results will be stored in the folder with your ID. You may create several users, that will create several folders with the differents IDs you used and save the results in the right folders.
+   
+2.2) Executing the compiled source code
+
+- Go to the trials folder
+- Go to any of the folders within, let's say you pick the "demo" folder.
+- Open git bash
+- Use the command 
 
 ```
 bash command.txt
 ```
 This will run the command written in the command file. This file, along with the veriolg file and the input/output text files can be modified to suit your needs. See the RUN.md file for examples of commands, especially if you want to use another UCF file.
+- See the results in the latest "job__something_" folder, in the "demo" folder you already are.
 
-**Note that you need the APE software to read the .ape files created by Cello and create the images of the plasmid circuits like the one below**
+**Note that when running the app this way, you need the APE software to read the .ape files created by Cello and create the images of the plasmid circuits like the one below**
 
 
 <img width="353" alt="Screenshot 2024-03-19 142847" src="https://github.com/Selena-JM/Adapted_cello_java/assets/160735287/4b95c6ba-f3f4-4546-8b31-f41788f05b66">
 
+## Modifications I made
+In this section are all the modifications I made to the source code. It is basically the notes I took while I was working so it may not be clear and well explained but all the steps are listed.
 
-## Fixing compilation errors
-- Go to https://github.com/CIDARLAB/cello/blob/develop/INSTALL.md for information on how to install
+### Fixing compilation errors
+- I went to https://github.com/CIDARLAB/cello/blob/develop/INSTALL.md for information on how to install, I tried with and without docker for windows.
 - The repository used https://repo.spring.io/libs-release has since become private so we cannot access what is in this repository
     - Can still name it in the pom.xml file as a repository but all dependencies need to be installed manually
-    - Follow the installation without docker (installation of maven and then installation of the local_jars)
+    - Followed the installation without docker (installation of maven and then installation of the local_jars)
     - I wanted to still use docker so I then got back to the installation with docker : See https://stackoverflow.com/questions/55183286/add-local-external-jar-should-not-point-at-files-within-the-project-directory for how to write the dependencies after having installed the jar files. Need to change the following according to the local installation of the jars and not from the repository :
     1. pom.xml file 
     2. dockerfile 
@@ -46,7 +76,7 @@ This will run the command written in the command file. This file, along with the
 
 —> after that the build was successful 
 
-## Fixing the password problem
+### Fixing the password problem
 When launching the app, a username and password was requested and nothing worked
 
 - Need to change the version of lombok package otherwise we get the error Illegal reflective access by lombok.javac.apt.LombokProcessor
@@ -60,10 +90,10 @@ When launching the app, a username and password was requested and nothing worked
     https://stackoverflow.com/questions/45232071/springboot-401-unauthorized-even-with-out-security
     
 
-## Fixing input/output access issues
+### Fixing input/output access issues
 Had to modify BaseController at line 35 from i = 0 to i=2 so that the C: in windows path becomes only a / and fits the unix path type, otherwise couldn’t access the files in cello_results/SelenaJM/ which are the inputs and outputs
 
-## Fixing the running issue
+### Fixing the running issue
 —> The interface works and can enter the input and outputs but nothing runs
 - When clicking on run nothing happens
 - Trying the python CLI :
@@ -354,7 +384,7 @@ Had to modify BaseController at line 35 from i = 0 to i=2 so that the C: in wind
     ```
 
         
-## Fixing visual representation issues
+### Fixing visual representation issues
 --> Now everything works but don’t have the visual respresentations, get the error :
     
 ``` 
