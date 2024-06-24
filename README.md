@@ -27,7 +27,7 @@ Note that some of the modifications may not have been needed at the end, but it 
 
    2.2. Executing the compiled source code
 
-- Go to the trials folder
+- Go to the "trials" folder
 - Go to any of the folders within, let's say you pick the "demo" folder.
 - Open git bash
 - Use the command 
