@@ -12,7 +12,7 @@ Note that some of the modifications may not have been needed at the end, but it 
 
 2) Then there are 2 ways of using this app
    
-2.1) Web application
+   2)1) Web application
 
 - Run the following in a git bash window 
    ```
@@ -23,7 +23,7 @@ Note that some of the modifications may not have been needed at the end, but it 
 - Go to : http://127.0.0.1:8080 and create an ID and password, then use the app as you want.
 - There will be a folder with your ID in the folder cello_results created earlier. All your results will be stored in the folder with your ID. You may create several users, that will create several folders with the differents IDs you used and save the results in the right folders.
    
-2.2) Executing the compiled source code
+   2)2) Executing the compiled source code
 
 - Go to the trials folder
 - Go to any of the folders within, let's say you pick the "demo" folder.
